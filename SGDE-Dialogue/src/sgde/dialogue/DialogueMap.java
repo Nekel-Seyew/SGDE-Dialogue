@@ -31,6 +31,8 @@ public class DialogueMap {
                 DO.addText(getMText(line));
             }else if(line.contains("@")){
                 DO.addPC(getGoTo(line), getPCString(line));
+            }else if(line.contains("}") && line.length()<3){
+                map.add(DO.place, DO);
             }
             
             //Need something to make it look not bad
