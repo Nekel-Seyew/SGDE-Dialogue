@@ -49,6 +49,17 @@ public class DialogueMap {
         }//Done Parsing
     }
     
+    public DialogueOption getNext(String next, DialogueOption DO) throws DoneWithDialogueException{
+        if(next==null || DO==null){
+            return map.get(0);
+        }
+        int get=DO.getNextChoice(next);
+        if(get==Integer.MAX_VALUE){
+            throw new DoneWithDialogueException("");
+        }
+        return map.get(DO.getNextChoice(next));
+    }
+    
     private int grabNum(String n){
         int s=n.indexOf("$");
         if(n.contains("START")){

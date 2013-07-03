@@ -5,6 +5,7 @@
 package sgde.dialogue;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -13,11 +14,12 @@ import java.util.ArrayList;
 public class DialogueOption {
     String text;
     int place;
-    ArrayList<Speech> nodes;
+    HashMap<String, Speech> nodez;
     
     public DialogueOption(int place){
         this.place=place;
-        nodes=new ArrayList<Speech>();
+        //nodes=new ArrayList<Speech>();
+        nodez=new HashMap<String, Speech>();
     }
     
     public void addText(String txt){
@@ -25,12 +27,17 @@ public class DialogueOption {
     }
     
     public void addPC(int go, String txt){
-        nodes.add(new dg(go,txt));
+        //nodes.add(new dg(go,txt));
+        nodez.put(txt, new dg(go,txt));
+    }
+    
+    public int getNextChoice(String key){
+        return nodez.get(key).goTo();
     }
     
     public String toString(){
         String s="Place: "+this.place;
-        s+=" Nodes:"+nodes.toString();
+        s+=" Nodes:"+nodez.toString();
         return s;
     }
     
