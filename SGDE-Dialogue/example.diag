@@ -7,10 +7,10 @@ $START={
 $1={
     @ST=Wait, haven't You heard?;
     #PC:{No, I haven't!;->2;}
-    #PC:{Oh, Right! Sorry, I just "woke up";->END}
+    #PC:{Oh, Right! Sorry, I just "woke up";->END;}
 }
 
 $2={
     @ST=Happy Fourth of July!;
-    #PC:{You Too!;->END}
+    #PC:{You Too!;->END;}
 }

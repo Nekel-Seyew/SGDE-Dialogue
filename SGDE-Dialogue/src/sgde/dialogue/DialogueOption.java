@@ -28,6 +28,12 @@ public class DialogueOption {
         nodes.add(new dg(go,txt));
     }
     
+    public String toString(){
+        String s="Place: "+this.place;
+        s+=" Nodes:"+nodes.toString();
+        return s;
+    }
+    
  private class dg implements Speech{
      String text;
      int goTo;
@@ -43,6 +49,11 @@ public class DialogueOption {
      
      public String getText(){
          return text;
+     }
+     
+     public String toString(){
+         String s="{PC: Text:["+text+"], goto: "+goTo+"}";
+         return s;
      }
      
  } 

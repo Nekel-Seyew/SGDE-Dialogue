@@ -19,26 +19,34 @@ public class DialogueMap {
     ArrayList<DialogueOption> map;
     
     public DialogueMap(String text) throws FileNotFoundException, IncorrectFormatException{
+        makeMap(text);
+    }//yep, all good now.
+    
+    /**
+     * Parses the diag file. Note: While technically public, it should never be called outside of this class. 
+     * Public only for possible extension of diag files.
+     * @param text
+     * @throws FileNotFoundException
+     * @throws IncorrectFormatException 
+     */
+    public void makeMap(String text)throws FileNotFoundException, IncorrectFormatException{
         Scanner reader=new Scanner(new File(text));
+        map=new ArrayList<DialogueOption>();
         DialogueOption DO=null;
         while(reader.hasNext()){
-            String line=reader.next();
+            String line=reader.nextLine();
             
             if(line.startsWith("$")){
                 DO=new DialogueOption(grabNum(line));
             }
-            else if(line.contains("#")){
+            else if(line.contains("@")){
                 DO.addText(getMText(line));
-            }else if(line.contains("@")){
+            }else if(line.contains("#")){
                 DO.addPC(getGoTo(line), getPCString(line));
             }else if(line.contains("}") && line.length()<3){
                 map.add(DO.place, DO);
             }
-            
-            //Need something to make it look not bad
-        }
-        
-        //done?
+        }//Done Parsing
     }
     
     private int grabNum(String n){
@@ -50,11 +58,12 @@ public class DialogueMap {
     }
     
     private String getMText(String ln){
-        return ln.substring(ln.indexOf("="+1),ln.indexOf(";"));
+        return ln.substring(ln.indexOf("=")+1,ln.indexOf(";"));
     }
     
     private int getGoTo(String ln){
-        String line=ln.substring(ln.indexOf(">")+1,ln.indexOf(";"));
+        int i=ln.indexOf(">")+1;
+        String line=ln.substring(i,ln.lastIndexOf(";"));
         if(line.contains("END")){
             return END;
         }
