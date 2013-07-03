@@ -1,16 +1,21 @@
 $START={
-    @ST="Hello, There";
+    @ST=Hello, There;
     #PC:{"hi";->2;}
     #PC:{"what's going on?";->1;}
 }
 
 $1={
     @ST=Wait, haven't You heard?;
-    #PC:{No, I haven't!;->2;}
-    #PC:{Oh, Right! Sorry, I just "woke up";->END;}
+    #PC:{"No, I haven't!";->2;}
+    #PC:{"Oh, Right! Sorry, I just "woke up"";->3;}
 }
 
 $2={
     @ST=Happy Fourth of July!;
-    #PC:{You Too!;->END;}
+    #PC:{"You Too!";->END;}
+}
+
+$3={
+    @ST=Well then, happy fourth of July!;
+    #PC:{"You Too!";->END;}
 }

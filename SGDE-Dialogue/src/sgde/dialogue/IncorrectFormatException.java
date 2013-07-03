@@ -9,7 +9,7 @@ package sgde.dialogue;
  * @author kdsweenx
  */
 class IncorrectFormatException extends Exception {
-    public IncorrectFormatException(String line){
-        super("Error on line: \""+line+"\"");
+    public IncorrectFormatException(String line, int section){
+        super("Error in section: "+section+" on line:\n\t \""+line+"\"\n");
     }
 }

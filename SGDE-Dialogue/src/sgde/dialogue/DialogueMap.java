@@ -35,16 +35,19 @@ public class DialogueMap {
         DialogueOption DO=null;
         while(reader.hasNext()){
             String line=reader.nextLine();
-            
-            if(line.startsWith("$")){
-                DO=new DialogueOption(grabNum(line));
-            }
-            else if(line.contains("@")){
-                DO.addText(getMText(line));
-            }else if(line.contains("#")){
-                DO.addPC(getGoTo(line), getPCString(line));
-            }else if(line.contains("}") && line.length()<3){
-                map.add(DO.place, DO);
+            try {
+                if (line.startsWith("$")) {
+                    DO = new DialogueOption(grabNum(line));
+                } else if (line.contains("@")) {
+                    DO.addText(getMText(line));
+                } else if (line.contains("#")) {
+                    DO.addPC(getGoTo(line), getPCString(line));
+                } else if (line.contains("}") && line.length() < 3) {
+                    map.add(DO.place, DO);
+                }
+
+            } catch (StringIndexOutOfBoundsException e) {
+                throw new IncorrectFormatException(line, DO.place);
             }
         }//Done Parsing
     }
