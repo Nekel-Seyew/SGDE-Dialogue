@@ -5,10 +5,10 @@
 package sgde.dialogue;
 
 /**
- *
+ * An exception which is triggered when the provided script was improperly formatted.
  * @author kdsweenx
  */
-class IncorrectFormatException extends Exception {
+public class IncorrectFormatException extends Exception {
     public IncorrectFormatException(String line, int section){
         super("Error in section: "+section+" on line:\n\t \""+line+"\"\n");
     }

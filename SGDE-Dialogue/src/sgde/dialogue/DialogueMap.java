@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- *
+ * The Map of responses and prompts of the scripted dialogue. Primarily an internal class.
  * @author kdsweenx
  */
 public class DialogueMap {
@@ -18,6 +18,12 @@ public class DialogueMap {
     
     ArrayList<DialogueOption> map;
     
+    /**
+     * Primary constructor for the map of possible choices (plus prompt).
+     * @param text the script for the entire conversation.
+     * @throws FileNotFoundException is thrown if the passed in file wasn't found.
+     * @throws IncorrectFormatException is thrown if the given script is not properly formatted.
+     */
     public DialogueMap(String text) throws FileNotFoundException, IncorrectFormatException{
         makeMap(text);
     }//yep, all good now.
@@ -51,7 +57,14 @@ public class DialogueMap {
             }
         }//Done Parsing
     }
-    
+    /**
+     * Returns the instance of the next collection of responses.
+     * @param next the string which the player selected.
+     * @param DO the current instance being held of options.
+     * @return the next instance of options, (with prompt)
+     * @throws DoneWithDialogueException An internal exception to tell the framework the 
+     * dialogue has run it's course.
+     */
     public DialogueOption getNext(String next, DialogueOption DO) throws DoneWithDialogueException{
         if(next==null || DO==null){
             return map.get(0);
