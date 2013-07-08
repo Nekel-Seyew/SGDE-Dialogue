@@ -11,7 +11,7 @@ import java.util.HashMap;
  * This also includes the original prompt which produced these responses. This class
  * is generally only for use by the framework. For proper usage of this project,
  * please use the <class>DialogueInterface</class> class.
- * @author kdsweenx
+ * @author Kyle Sweeney
  */
 public class DialogueOption {
     String text;

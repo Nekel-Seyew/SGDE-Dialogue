@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 /**
  * The Map of responses and prompts of the scripted dialogue. Primarily an internal class.
- * @author kdsweenx
+ * @author Kyle Sweeney
  */
 public class DialogueMap {
     public static int END=Integer.MAX_VALUE;

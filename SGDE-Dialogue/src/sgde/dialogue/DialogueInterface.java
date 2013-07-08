@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * This class represents a possible instance of communication between a player and an NPC.
  * Every time a player initiates communication with an NPC, this class is supposed 
  * to mediate the instance, based upon a script provided by the programmer.
- * @author kdsweenx
+ * @author Kyle Sweeney
  */
 public class DialogueInterface {
     /**

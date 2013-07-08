@@ -7,7 +7,7 @@ package sgde.dialogue;
 /**
  * An Internal interface for representing a single option in the collection of options
  * after receiving a prompt.
- * @author kdsweenx
+ * @author Kyle Sweeney
  */
 public interface Speech {
     /**
