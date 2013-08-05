@@ -17,6 +17,7 @@ public class DialogueMap {
     public static int END=Integer.MAX_VALUE;
     
     ArrayList<DialogueOption> map;
+    ArrayList<Integer> pc;
     
     /**
      * Primary constructor for the map of possible choices (plus prompt).
@@ -26,6 +27,7 @@ public class DialogueMap {
      */
     public DialogueMap(String text) throws FileNotFoundException, IncorrectFormatException{
         makeMap(text);
+        pc=new ArrayList<Integer>();
     }//yep, all good now.
     
     /**
@@ -67,13 +69,15 @@ public class DialogueMap {
      */
     public DialogueOption getNext(String next, DialogueOption DO) throws DoneWithDialogueException{
         if(next==null || DO==null){
+            pc.add(0);
             return map.get(0);
         }
         int get=DO.getNextChoice(next);
         if(get==Integer.MAX_VALUE){
             throw new DoneWithDialogueException("");
         }
-        return map.get(DO.getNextChoice(next));
+        pc.add(get);
+        return map.get(get);
     }
     
     private int grabNum(String n){
@@ -101,4 +105,7 @@ public class DialogueMap {
         return ln.substring(ln.indexOf("{")+1,ln.indexOf(";"));
     }
     
+    public ArrayList<Integer> getPlayerChoice(){
+        return this.pc;
+    }
 }

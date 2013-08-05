@@ -25,6 +25,9 @@ public class DialogueInterface {
      * Whether or not the interaction has run its course.
      */
     boolean done;
+    
+    ArrayList<String> playerChoices;
+    
     /**
      * A constructor which takes in the file that holds the script for the dialogue interaction.
      * @param diagFile the scripted dialogue.
@@ -34,6 +37,7 @@ public class DialogueInterface {
             DM=new DialogueMap(diagFile);
             DO=DM.getNext(null, null);
             done=false;
+            playerChoices=new ArrayList<String>();
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -59,6 +63,7 @@ public class DialogueInterface {
      */
     public void PlayerChoice(String dgChoice){
         try{
+            this.playerChoices.add(dgChoice);
             DO=DM.getNext(dgChoice, DO);
         }catch(DoneWithDialogueException dwde){
             //Oh, we are done....
@@ -72,6 +77,20 @@ public class DialogueInterface {
      */
     public boolean isDone(){
         return done;
+    }
+    /**
+     * Returns the choices the player made as strings.
+     * @return the array of strings the player passed in.
+     */
+    public ArrayList<String> playerChoiceString(){
+        return this.playerChoices;
+    }
+    /**
+     * Returns the choices the player made as integers.
+     * @return the array of integers the player's choices map to in the .diag file.
+     */
+    public ArrayList<Integer> playerChoiceInt(){
+        return this.DM.getPlayerChoice();
     }
 }
 
