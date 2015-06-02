@@ -8,6 +8,7 @@ To use this, Just build in Netbeans and include the resulting JAR file into your
 
 To create Dialog scripts, here is an example one:
 
+```
 $START={
     @ST=Hello, There;
     #PC:{"hi";->2;}
@@ -29,6 +30,7 @@ $3={
     @ST=Well then, happy fourth of July!;
     #PC:{"You Too!";->END;}
 }
+```
 
 We start with a prompt "Hello, There" written in plain text and ended with a semi-colon. The two responses are:
 1) hi
