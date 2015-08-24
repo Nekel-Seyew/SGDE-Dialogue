@@ -34,6 +34,7 @@ public class SGDEDialogue {
             DI.PlayerChoice(options.get(reader.nextInt()));
         }
         
+        System.out.println(Character.toString((char)('A'+1)));
         System.out.println(DI.playerChoiceString());
         System.out.println(DI.playerChoiceInt());
     }
